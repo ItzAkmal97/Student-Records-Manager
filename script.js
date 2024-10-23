@@ -1,8 +1,8 @@
 let students = [];
-let totalStudents = 0;
+let totalStudents = 2;
 
 const studentCounter = (() => {
-    totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0; // Initialize here
+    totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0;
     return () => {
         ++totalStudents;
         localStorage.setItem('studentCounter', totalStudents);
@@ -14,7 +14,7 @@ const addNewStudent = () => {
     const name = document.getElementById('nameInput').value;
     const score = parseFloat(document.getElementById('scoreInput').value);
 
-    if (name && !isNaN(score) && score >= 0 && score <= 100) { // Valid score range
+    if (name && !isNaN(score) && score >= 0 && score <= 100) {
         const student = { name, score };
         students.push(student);
 
@@ -93,7 +93,7 @@ const fetchStudentData = async () => {
         const response = await fetch('data.json');
         const resData = await response.json();
 
-        // Validate fetched student data
+
         resData.forEach(student => {
             if (student.name && !isNaN(student.score) && student.score >= 0 && student.score <= 100) {
                 students.push(student);
