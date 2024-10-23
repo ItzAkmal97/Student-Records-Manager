@@ -1,5 +1,5 @@
 let students = [];
-let totalStudents = 2;
+let totalStudents = 0;
 
 const studentCounter = (() => {
     totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0;
