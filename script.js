@@ -2,8 +2,8 @@ let students = [];
 let totalStudents = 0;
 
 const studentCounter = (() => {
-    totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0; // Initialize here
     return () => {
+        totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0;
         ++totalStudents;
         localStorage.setItem('studentCounter', totalStudents);
         return totalStudents;
@@ -14,12 +14,12 @@ const addNewStudent = () => {
     const name = document.getElementById('nameInput').value;
     const score = parseFloat(document.getElementById('scoreInput').value);
 
-    if (name && !isNaN(score) && score >= 0 && score <= 100) { // Valid score range
+    if (name && !isNaN(score) && score >= 0 && score <= 100) {
         const student = { name, score };
         students.push(student);
 
         saveToLocalStorage();
-        studentCounter();
+        studentCounter(); // Increment only when a new student is added manually
 
         console.log(`Added ${name} with a score of ${score}`);
 
@@ -98,9 +98,9 @@ const fetchStudentData = async () => {
         
         students = [...students, ...validFetchedStudents];
 
-        // Update total students count
-        totalStudents += validFetchedStudents.length;
-        localStorage.setItem('studentCounter', totalStudents); // Update localStorage too
+        // Set the correct totalStudents count to reflect both stored and fetched students
+        totalStudents = students.length;
+        localStorage.setItem('studentCounter', totalStudents); // Update localStorage with correct count
         
         displayStudents();
         displayStats();
@@ -111,7 +111,7 @@ const fetchStudentData = async () => {
 
 window.onload = () => {
     loadFromLocalStorage();
-    fetchStudentData();
+    fetchStudentData(); // Fetch and adjust total students after loading local data
 };
 
 document.getElementById('btn').addEventListener('click', addNewStudent);
