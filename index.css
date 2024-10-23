@@ -1,0 +1,50 @@
+body{
+    padding: 25px;
+    background-color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .title {
+      color: #000000;
+      text-align: center;
+  }
+
+  .output{
+    text-align: center;
+  }
+  
+  button{
+    padding: 10px;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover{
+    background-color: white;
+    color: black;
+    transition: 0.2s ease-in-out;
+  }
+  
+  input{
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  #sectionBox{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  .container{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-bottom: 10rem;
+    max-width: 60%;
+    margin: auto;
+    
+  }
