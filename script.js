@@ -19,7 +19,7 @@ const addNewStudent = () => {
         students.push(student);
 
         saveToLocalStorage();
-        studentCounter(); // Increment only when a new student is added manually
+        studentCounter();
 
         console.log(`Added ${name} with a score of ${score}`);
 
@@ -93,14 +93,14 @@ const fetchStudentData = async () => {
         const response = await fetch('data.json');
         const resData = await response.json();
 
-        // Validate fetched student data
+   
         const validFetchedStudents = resData.filter(student => student.name && !isNaN(student.score) && student.score >= 0 && student.score <= 100);
         
         students = [...students, ...validFetchedStudents];
 
-        // Set the correct totalStudents count to reflect both stored and fetched students
+        
         totalStudents = students.length;
-        localStorage.setItem('studentCounter', totalStudents); // Update localStorage with correct count
+        localStorage.setItem('studentCounter', totalStudents);
         
         displayStudents();
         displayStats();
@@ -111,7 +111,7 @@ const fetchStudentData = async () => {
 
 window.onload = () => {
     loadFromLocalStorage();
-    fetchStudentData(); // Fetch and adjust total students after loading local data
+    fetchStudentData();
 };
 
 document.getElementById('btn').addEventListener('click', addNewStudent);
