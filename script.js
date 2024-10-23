@@ -4,9 +4,8 @@ let totalStudents = 0;
 const studentCounter = (() => {
     return () => {
         totalStudents = parseInt(localStorage.getItem('studentCounter')) || 0;
-
+        ++totalStudents;
         localStorage.setItem('studentCounter', totalStudents);
-        totalStudents++;
         return totalStudents;
     }
 })();
