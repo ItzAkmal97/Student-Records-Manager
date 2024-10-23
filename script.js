@@ -75,7 +75,7 @@ const findLowestScore = () => {
 
 const displayStudents = () => {
     const output = document.querySelector('.output p');
-    output.innerHTML = `Total Students: ${totalStudents} <br> ${students.map(student => `${student.name}: ${student.score}`).join(', ')}`;
+    output.innerHTML = `Total Students: ${totalStudents} </br> ${students.map(student => `${student.name}: ${student.score}`).join(', ')} </br> Average Score: ${averageScore()} </br> Highest Score: ${findHighestScore()} </br> Lowest Score: ${findLowestScore()}`;
 };
 
 const displayStats = () => {
